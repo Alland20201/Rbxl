@@ -1,0 +1,21 @@
+-- Definiere den Spawn-Ort
+local spawnLocation = game.Workspace.SpawnLocation -- Ändere dies in den gewünschten Spawn-Ort in deinem Spiel
+
+-- Funktion, um den Spieler zu spawnen
+local function spawnPlayer(player)
+    if spawnLocation then
+        local character = player.Character
+        if character then
+            character:SetPrimaryPartCFrame(spawnLocation.CFrame)
+        end
+    end
+end
+
+-- Verbinde die Funktion mit dem PlayerAdded-Ereignis
+game.Players.PlayerAdded:Connect(spawnPlayer)
+
+-- Verbinde die Funktion mit dem PlayerRemoving-Ereignis
+game.Players.PlayerRemoving:Connect(function(player)
+    -- Hier kannst du zusätzliche Logik hinzufügen, bevor der Spieler entfernt wird.
+    -- Zum Beispiel, um den Spielerzustand zu speichern.
+end)
